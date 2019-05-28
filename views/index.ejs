@@ -17,20 +17,19 @@
               <div class="nav-wrapper">
                   <a href="/players/new" <% title === 'Add Player' ? 'class="active"' : '' %>>ADD PLAYER</a>
                       <!-- new html below -->
-                      <ul class="right">
-                          <li>
-                          <% if (user) { %>
-                              <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-                          <% } else { %>
-                              <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
-                          <% } %>
-                          </li>
-                      </ul>
               </div>
           </nav>
       </div>
-    <h1><%= title %></h1>
-    <img src="/public/images/IMG_6917.JPG" alt="team-picture">
-    <p>Welcome to <%= title %></p>
+    
+    <img src="<%= ('images/IMG_6917.JPG') %>" alt="Team-picture">
+    <ul class="center">
+        <li>
+        <% if (user) { %>
+            <a href="/logout">Log Out</a>
+        <% } else { %>
+            <a href="/auth/google">Login with Google</a>
+        <% } %>
+        </li>
+    </ul>
   </body>
 </html>
