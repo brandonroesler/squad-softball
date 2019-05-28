@@ -1,25 +1,16 @@
 const Player = require('../models/player');
 
 module.exports = {
-    index
+    index,
+    new: newPlayer
 };
 
-function index(req, res, next) {
-    console.log(req.query)
-    // Make the query object to use with Player.find based up
-    // the user has submitted the search form or now
-    let modelQuery = req.query.name ? {name: new RegExp(req.query.name, 'i')} : {};
-    // Default to sorting by name
-    let sortKey = req.query.sort || 'name';
-    Player.find(modelQuery)
-    .sort(sortKey).exec(function(err, players) {
-      if (err) return next(err);
-      // Passing search values, name & sortKey, for use in the EJS
-      res.render('players/index', { 
-        players, 
-        name: req.query.name, 
-        sortKey,
-        user:req.user 
-      });
+function index(req, res) {
+    Player.find({}, function(err, players) {
+      res.render('players/index', { title: 'All Players', players});
     });
-  }
+}
+
+function newPlayer(req, res) {
+  res.render('players/new', { title: 'Add Player'});
+}

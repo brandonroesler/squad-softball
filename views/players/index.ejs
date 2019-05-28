@@ -1,0 +1,18 @@
+<table id="list">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Release<br>Year</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% players.forEach(function(p) { %>
+            <tr>
+              <td><%= p.name %></td>
+              <td><%= p.number %></td>
+              <td><a href="/players/<%= p._id %>">DETAILS</a></td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
