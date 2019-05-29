@@ -10,12 +10,15 @@
         <tbody>
           <% players.forEach(function(p) { %>
             <tr>
-                <td><%= p.number %></td>
+              <td><%= p.number %></td>
               <td><%= p.name %></td>
               <td><%= p.position %></td>
+              <td><form action="/players/<%= p._id %>?_method=DELETE" method="POST" >
+                <button type="submit">X</button>
+              </form></td>
               <td><a href="/players/<%= p._id %>">DETAILS</a></td>
             </tr>
             <% }); %>
           </tbody>
         </table>
-        <%- include('../partials/footer') %>
+<%- include('../partials/footer') %>

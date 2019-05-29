@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-<form id="new-form" action="/players" method="POST">
+<form id="new-form" action="/players/create" method="POST">
     <label>Number:</label>
     <input type="number" name="number">
     <label>Name:</label>
@@ -19,8 +19,21 @@
       <option value="RCF">RCF</option>
       <option value="RF">RF</option>
     </select>
+    <label>Bats:</label>
+    <select name="bats">
+      <option value="R">R</option>
+      <option value="L">L</option>
+      <option value="S">S</option>
+    </select>
+    <label>Throws:</label>
+    <select name="throws">
+      <option value="R">R</option>
+      <option value="L">L</option>
+    </select>
     <label>Home State:</label>
     <input type="text" name="homeState">
+    <label>Birthdate:</label>
+    <input type="date" name="dob">
     <input type="submit" value="Add Player">
   </form>
   <%- include('../partials/footer') %>

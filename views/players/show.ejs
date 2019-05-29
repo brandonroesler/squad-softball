@@ -1,14 +1,14 @@
+<%- include('../partials/header') %>
 <section id="show-page">
+    <h1><%= player.name %></h1>
         <div>Number: </div>
         <div><%= player.number %></div>
-        <div>Name: </div>
-        <div><%= player.name %></div>
         <div>Nickname: </div>
         <div><%= player.nickname %></div>
         <div>Position: </div>
         <div><%= player.position %></div>
         <div>B/T: </div>
-        <div><%= player.bt %></div>
+        <div><%= player.bats %>/<%= player.throws %></div>
         <div>DOB: </div>
         <div><%= player.dob %></div>
       </section>

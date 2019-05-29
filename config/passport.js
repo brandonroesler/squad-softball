@@ -1,6 +1,6 @@
 const passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
-var Player = require('../models/player');
+var User = require('../models/user');
 
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
@@ -8,32 +8,34 @@ passport.use(new GoogleStrategy({
     callbackURL: process.env.GOOGLE_CALLBACK
   },
 function(accessToken, refreshToken, profile, cb) {
-    Player.findOne({ 'googleID': profile.id }, function(err, player) {
+    User.findOne({ 'googleId': profile.id }, function(err, user) {
         if (err) return cb(err);
-        if (player) {
-            return cb(null, player);
+        if (user) {
+            console.log('user exists')
+            return cb(null, user);
         } else {
-            // we have a new player via OAuth!
-            var newPlayer = new Player({
+            console.log('user needs to be created')
+            // we have a new user via OAuth!
+            var newUser = new User({
                 name: profile.displayName,
                 email: profile.emails[0].value,
                 googleId: profile.id
             });
-            newPlayer.save(function(err) {
+            newUser.save(function(err) {
                 if (err) return cb(err);
-                return cb(null, newPlayer);
+                return cb(null, newUser);
             });
         }
     });
   }
 ));
 
-passport.serializeUser(function(player, done) {
-    done(null, player.id);
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
-    Player.findById(id, function(err, player) {
-        done(err, player);
+    User.findById(id, function(err, user) {
+        done(err, user);
     });
 });

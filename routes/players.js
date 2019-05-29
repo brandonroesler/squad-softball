@@ -5,6 +5,10 @@ var playersCtrl = require('../controllers/players');
 /* GET users listing. */
 router.get('/', playersCtrl.index);
 router.get('/new', playersCtrl.new);
-router.post('/players', playersCtrl.create);
+router.get('/:id', playersCtrl.show);
+router.delete('/:id', playersCtrl.delPlayer);
+
+//actual url below is http://localhost:3000/players/create
+router.post('/create', playersCtrl.create);// this is the route where the form needs to send its info
 
 module.exports = router;
