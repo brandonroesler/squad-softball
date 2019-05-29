@@ -1,22 +1,21 @@
+<%- include('../partials/header') %>
 <table id="list">
         <thead>
           <tr>
             <th>Number</th>
             <th>Name</th>
-            <th>Nickname</th>
             <th>Position</th>
-            <th>B/T</th>
-            <th>DOB</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
           <% players.forEach(function(p) { %>
             <tr>
+                <td><%= p.number %></td>
               <td><%= p.name %></td>
-              <td><%= p.number %></td>
+              <td><%= p.position %></td>
               <td><a href="/players/<%= p._id %>">DETAILS</a></td>
             </tr>
             <% }); %>
           </tbody>
         </table>
+        <%- include('../partials/footer') %>

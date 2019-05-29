@@ -2,7 +2,8 @@ const Player = require('../models/player');
 
 module.exports = {
     index,
-    new: newPlayer
+    new: newPlayer,
+    create
 };
 
 function index(req, res) {
@@ -13,4 +14,14 @@ function index(req, res) {
 
 function newPlayer(req, res) {
   res.render('players/new', { title: 'Add Player'});
+}
+
+
+function create (req, res) {
+  var player = new Player(req.body);
+  player.save(function(err) {
+    if (err) return res.redirect('/players/new');
+    // res.redirect('/movies');
+    res.redirect(`/players/${player._id}`);
+  });
 }

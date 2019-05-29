@@ -1,3 +1,4 @@
+<%- include('../partials/header') %>
 <form id="new-form" action="/players" method="POST">
     <label>Number:</label>
     <input type="number" name="number">
@@ -6,12 +7,20 @@
     <label>Nickname:</label>
     <input type="text" name="nickname">
     <label>Position</label>
-    <select name="position">
-      <option value="IF">IF</option>
-      <option value="OF">OF</option>
-      <option value="IF/OF">IF/OF</option>
+    <select name="position" multiple>
+      <option value="P">P</option>
+      <option value="C">C</option>
+      <option value="1B">1B</option>
+      <option value="2B">2B</option>
+      <option value="3B">3B</option>
+      <option value="SS">SS</option>
+      <option value="LF">LF</option>
+      <option value="LCF">LCF</option>
+      <option value="RCF">RCF</option>
+      <option value="RF">RF</option>
     </select>
     <label>Home State:</label>
     <input type="text" name="homeState">
     <input type="submit" value="Add Player">
   </form>
+  <%- include('../partials/footer') %>

@@ -8,8 +8,10 @@
 </head>
 <body>
     <nav>
-        <a href="/players/new" <% title === 'Add Player' ? 'class="active"' : '' %>>ADD PLAYER</a>>
-        <a href="/players" <%- title === 'All Players' ? 'class="Active"' : %>>ALL PLAYERS<</a>
+        <a href="/players/new" <% title === 'Add Player' ? 'class="active"' : '' %>>ADD PLAYER</a>
+        <a href="/players" <%- title === 'All Players' ? 'class="active"' : '' %>>ALL PLAYERS</a>
+        <a href="/logout">Log Out</a>
     </nav>
     <main>
-        <h1>%= title %></h1>
+        <h1><%= title %></h1>
+    
