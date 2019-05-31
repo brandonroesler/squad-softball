@@ -1,14 +1,44 @@
 <%- include('../partials/header') %>
 <section id="show-page">
     <h1><%= player.name %></h1>
-        <div>Number: </div>
-        <div><%= player.number %></div>
-        <div>Nickname: </div>
-        <div><%= player.nickname %></div>
-        <div>Position: </div>
-        <div><%= player.position %></div>
-        <div>B/T: </div>
-        <div><%= player.bats %>/<%= player.throws %></div>
-        <div>DOB: </div>
-        <div><%= player.dob %></div>
+    <table id="list">
+        <thead>
+            <th>Number</th>
+            <th>Nickname</th>
+            <th>Position(s)</th>
+            <th>Bats/Throws</th>
+            <th>Home State</th>
+            <th>Birthdate</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= player.number %></td>
+                <td><%= player.nickname %></td>
+                <td>
+                <% player.position.forEach(function(position) { %>
+                    <%= position.position %>
+               <% }) %>
+                </td>
+                <td><%= player.bats %>/<%= player.throws %></td>
+                <td><%= player.homeState %></td>
+                <td><%= player.dob %></td>
+                <td>
+                    <form action="/players/<%= player._id %>/positions" method="POST">
+                        <select name="position">
+                        <option value="P">P</option>
+                        <option value="C">C</option>
+                        <option value="1B">1B</option>
+                        <option value="2B">2B</option>
+                        <option value="3B">3B</option>
+                        <option value="SS">SS</option>
+                        <option value="LF">LF</option>
+                        <option value="LCF">LCF</option>
+                        <option value="RCF">RCF</option>
+                        <option value="RF">RF</option>
+                        </select>
+                        <button type="submit">Add Position</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
       </section>

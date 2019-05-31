@@ -4,6 +4,7 @@ module.exports = {
     index,
     new: newPlayer,
     create,
+    createPosition,
     show,
     delPlayer
 };
@@ -22,19 +23,32 @@ function newPlayer(req, res) {
 function create (req, res) {
   var player = new Player(req.body);
   player.save(function(err) {
-    if (err) return res.redirect('/players/new');
     console.log(err);
+    if (err) return res.redirect('/players/new');
     // res.redirect('/movies');
     res.redirect('/players')
     // res.redirect(`/players/${player._id}`);
   });
 }
 
+//Code from Chris
+function createPosition(req, res){
+  let name = req.player.name
+  Player.findOne({name: name})
+  .then(person=>{
+    let port = person.portfolio.id(req.params.id)
+    res.render('players/:id', {
+      title: 'Portfolios',
+      user: req.user,
+      port
+    })
+  })
+}
+
 function show (req, res) {
   Player.findById(req.params.id, function(err, player) {
     if (err) return res.send(err);
     res.render('players/show', { title: 'Player Profile', player});
-    console.log(player.position);
   })
 };
 

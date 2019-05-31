@@ -1,10 +1,11 @@
 <%- include('../partials/header') %>
-<table id="list">
+<h1><%= title %></h1>
+<table id="list" class="striped center">
         <thead>
           <tr>
             <th>Number</th>
             <th>Name</th>
-            <th>Position</th>
+            <th>Home State</th>
           </tr>
         </thead>
         <tbody>
@@ -12,11 +13,11 @@
             <tr>
               <td><%= p.number %></td>
               <td><%= p.name %></td>
-              <td><%= p.position %></td>
+              <td><%= p.homeState %></td>
+              <td><a href="/players/<%= p._id %>">DETAILS</a></td>
               <td><form action="/players/<%= p._id %>?_method=DELETE" method="POST" >
                 <button type="submit">X</button>
               </form></td>
-              <td><a href="/players/<%= p._id %>">DETAILS</a></td>
             </tr>
             <% }); %>
           </tbody>

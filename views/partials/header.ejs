@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title><%= title %></title>
 </head>
 <body>
     <nav>
         <a href="/players/new" <% title === 'Add Player' ? 'class="active"' : '' %>>ADD PLAYER</a>
         <a href="/players" <%- title === 'All Players' ? 'class="active"' : '' %>>ALL PLAYERS</a>
-        <a href="/logout">Log Out</a>
+        <a class="right" href="/logout">Log Out</a>
     </nav>
     <main>
-        <h1><%= title %></h1>
     
